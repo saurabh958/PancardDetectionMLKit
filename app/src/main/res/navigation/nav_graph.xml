@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_kyc_declaration">
+
+    <fragment
+        android:id="@+id/fragment_kyc_declaration"
+        android:name="com.example.aadharpancardapp.FragmentKYCDeclaration"
+        android:label="fragment_kyc_declaration"
+        tools:layout="@layout/fragment_kyc_declaration" />
+    <fragment
+        android:id="@+id/fragment_upload_pan_card"
+        android:name="com.example.aadharpancardapp.FragmentUploadPanCard"
+        android:label="fragment_upload_pan_card"
+        tools:layout="@layout/fragment_upload_pan_card" />
+</navigation>

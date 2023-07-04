@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_upload_soft_copy"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentUploadPanCard">
+
+    <ImageView
+        android:id="@+id/img_back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_back_buton"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/backbutton" />
+
+    <ScrollView
+        android:id="@+id/scrll_vw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_back_button">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_upload_soft_copy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/screen_background"
+        app:cardCornerRadius="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintTop_toBottomOf="@id/scrll_vw"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="10dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_upload_soft_copy_msg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_soft_copy_of_director_s_personal_pan_card"
+                android:fontFamily="@font/opensans_extrabold"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_upload_doc_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_desc"
+                android:fontFamily="@font/opensans_medium"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_color_light"
+                app:layout_constraintTop_toBottomOf="@id/tv_upload_soft_copy_msg"
+                app:layout_constraintStart_toStartOf="@id/tv_upload_soft_copy_msg"
+                app:layout_constraintEnd_toEndOf="@id/tv_upload_soft_copy_msg"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_browse_doc"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@id/img_selected"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_upload_doc_desc">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_upload_director_pan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upload_your_director_s_pan_here"
+                        android:fontFamily="@font/openwans_bold"
+                        android:textSize="14sp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/btn_browse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/purple_baclground_rectangle"
+                        android:text="@string/browse"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:paddingHorizontal="30dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_upload_director_pan"
+                        app:layout_constraintStart_toStartOf="@id/tv_upload_director_pan"
+                        app:layout_constraintEnd_toEndOf="@id/tv_upload_director_pan"/>
+
+                    <TextView
+                        android:id="@+id/tv_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jpg_png_max_size_10_mb"
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_color_light"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/btn_browse"
+                        app:layout_constraintStart_toStartOf="@id/btn_browse"
+                        app:layout_constraintEnd_toEndOf="@id/btn_browse"/>
+
+                    <TextView
+                        android:id="@+id/tv_or"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/or"
+                        android:fontFamily="@font/opensans_light"
+                        android:textSize="11sp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/text_color_light"
+                        app:layout_constraintTop_toBottomOf="@id/tv_hint"
+                        app:layout_constraintStart_toStartOf="@id/tv_hint"
+                        app:layout_constraintEnd_toEndOf="@id/tv_hint"/>
+
+                    <TextView
+                        android:id="@+id/tv_take_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/take_photo"
+                        android:fontFamily="@font/opensans_medium"
+                        android:textColor="@color/text_purple"
+                        android:layout_marginTop="20dp"
+                        android:includeFontPadding="true"
+                        android:paddingBottom="4dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_or"
+                        app:layout_constraintStart_toStartOf="@id/tv_or"
+                        app:layout_constraintEnd_toEndOf="@id/tv_or"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/img_selected"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@id/cv_browse_doc"
+                app:layout_constraintStart_toStartOf="@id/cv_browse_doc"
+                app:layout_constraintEnd_toEndOf="@id/cv_browse_doc"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/selected_image" />
+
+            <TextView
+                android:id="@+id/btn_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/purple_baclground_rectangle"
+                android:text="@string/remove"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="10dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/img_selected"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/btn_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/purple_baclground_rectangle"
+                android:text="@string/change"
+                android:visibility="gone"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/img_selected"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    </ScrollView>
+    <TextView
+        android:id="@+id/btn_final_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
+        android:fontFamily="@font/opensans_medium"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:background="@drawable/purple_baclground_rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="30dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

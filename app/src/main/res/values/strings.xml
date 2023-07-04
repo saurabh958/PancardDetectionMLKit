@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">AadharPancardApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_complete_your_kyc">Complete your KYC and Get your multi-currency accounts in just 5 mins!</string>
+    <string name="tv_complete">Complete your</string>
+    <string name="kvc"> KYC</string>
+    <string name="get_your_account"> and Get your multi-currency accounts in</string>
+    <string name="five_min"> just 5 mins!</string>
+    <string name="what_to_keep_handy">What to keep handy?</string>
+    <string name="business_pan">Business PAN</string>
+    <string name="business_bank_account_number_and_ifsc_code">Business bank account number and IFSC code</string>
+    <string name="why_do_we_need_kyc">Why do we need KYC?</string>
+    <string name="rbi_mandate_msg">RBI mandate company verification of customers engaging in cross border payments.</string>
+    <string name="kyc_declaratioin_msg">By clicking the above, I agree with Briskpe <b>Terms of Use</b> and <b>Privacy Policy.</b></string>
+    <string name="agree_and_continue">Agree and Continue</string>
+    <string name="terms_condition_msg">Please Agree with the Terms and Conditions</string>
+    <string name="upload_soft_copy_of_director_s_personal_pan_card">Upload Soft Copy Of Director\'s Personal PAN Card</string>
+    <string name="upload_desc">To complete verification of your business, we require authorisation of one of the company directors listed with the Ministry of Corporate Affairs (MCA).</string>
+    <string name="upload_your_director_s_pan_here">Upload your Director\'s PAN here</string>
+    <string name="browse">Browse</string>
+    <string name="jpg_png_max_size_10_mb">JPG / PNG / Max size 10 MB</string>
+    <string name="or">---- Or ----</string>
+    <string name="take_photo"><u>Take Photo</u></string>
+    <string name="submit">Submit</string>
+    <string name="backbutton">backbutton</string>
+    <string name="remove">Remove</string>
+    <string name="change">Change</string>
+    <string name="selected_image">Selected Image</string>
+    <string name="failed_to_get_image">Failed to Get Image</string>
+    <string name="need_camera_permssn">Need camera Permission</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="give_camera_permssn">Please give Camera Permission</string>
+
+
+
+</resources>
