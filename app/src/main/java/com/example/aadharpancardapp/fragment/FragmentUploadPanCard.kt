@@ -1,4 +1,4 @@
-package com.example.aadharpancardapp
+package com.example.aadharpancardapp.fragment
 
 import android.Manifest
 import android.app.Activity
@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.navigation.fragment.findNavController
+import com.example.aadharpancardapp.R
 import com.example.aadharpancardapp.databinding.FragmentUploadPanCardBinding
 import com.example.aadharpancardapp.utils.Utility
 import com.google.mlkit.vision.common.InputImage
@@ -212,10 +213,10 @@ class FragmentUploadPanCard : Fragment() {
 
     private fun createImageAndGetFileUri(): Uri? {
         var cameraUri: Uri? = null
-        val image = File(requireContext().filesDir,CHILD_FILE_NAME)
+        val image = File(requireContext().filesDir, CHILD_FILE_NAME)
         try {
             cameraUri = FileProvider.getUriForFile(
-                requireContext(),AUTHORITY_FILE_PROVIDER,
+                requireContext(), AUTHORITY_FILE_PROVIDER,
                 image
             )
         } catch (e: Exception) {

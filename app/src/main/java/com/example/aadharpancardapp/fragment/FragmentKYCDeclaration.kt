@@ -1,25 +1,17 @@
-package com.example.aadharpancardapp
+package com.example.aadharpancardapp.fragment
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.example.aadharpancardapp.R
 import com.example.aadharpancardapp.databinding.FragmentKycDeclarationBinding
-import com.example.aadharpancardapp.utils.Utility
 import com.example.aadharpancardapp.utils.Utility.getPurpleText
-import java.lang.StringBuilder
 
 class FragmentKYCDeclaration : Fragment() {
 

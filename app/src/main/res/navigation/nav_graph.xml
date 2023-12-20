@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/fragment_kyc_declaration"
-        android:name="com.example.aadharpancardapp.FragmentKYCDeclaration"
+        android:name="com.example.aadharpancardapp.fragment.FragmentKYCDeclaration"
         android:label="fragment_kyc_declaration"
         tools:layout="@layout/fragment_kyc_declaration" />
     <fragment
         android:id="@+id/fragment_upload_pan_card"
-        android:name="com.example.aadharpancardapp.FragmentUploadPanCard"
+        android:name="com.example.aadharpancardapp.fragment.FragmentUploadPanCard"
         android:label="fragment_upload_pan_card"
         tools:layout="@layout/fragment_upload_pan_card" />
 </navigation>

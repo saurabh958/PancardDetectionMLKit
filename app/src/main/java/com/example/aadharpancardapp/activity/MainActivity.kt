@@ -1,11 +1,10 @@
-package com.example.aadharpancardapp
+package com.example.aadharpancardapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.aadharpancardapp.R
 
 class MainActivity : AppCompatActivity() {
 
