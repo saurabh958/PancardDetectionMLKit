@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.aadharpancardapp.R
 import com.example.aadharpancardapp.databinding.FragmentUploadPanCardBinding
@@ -28,6 +29,7 @@ import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import kotlinx.coroutines.CoroutineScope
 import java.io.File
 import java.util.regex.Pattern
 import kotlin.Exception
@@ -41,6 +43,7 @@ class FragmentUploadPanCard : Fragment() {
     private lateinit var registerForPermission: ActivityResultLauncher<String>
     private lateinit var textRecognizer : TextRecognizer
     private var panCardNo = ""
+    private var isPanCard = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,7 +87,7 @@ class FragmentUploadPanCard : Fragment() {
         }
         binding.btnFinalSubmit.setOnClickListener {
             finalSubmit()
-            clearUri()
+            //clearUri()
         }
     }
 
@@ -96,16 +99,7 @@ class FragmentUploadPanCard : Fragment() {
         if(cameraImageUriFinal == null) {
             Toast.makeText(requireContext(), "Please select Image First", Toast.LENGTH_SHORT).show()
         } else {
-            val getExtractedTextPair = proceedForExtraction()
-            val isPanCard = detectPanCard(getExtractedTextPair)
-            if(isPanCard) {
-                Toast.makeText(requireContext(), "Pan Card Detected", Toast.LENGTH_SHORT).show()
-                clearUri()
-            } else {
-                Toast.makeText(requireContext(), "Please Enter Valid Document Only!", Toast.LENGTH_SHORT).show()
-                resetImageViewtoDefault()
-                clearUri()
-            }
+            proceedForExtraction()
         }
     }
 
@@ -139,7 +133,7 @@ class FragmentUploadPanCard : Fragment() {
         }*/
     }
 
-    private fun proceedForExtraction(): Pair<String, MutableList<Text.TextBlock>> {
+    private fun proceedForExtraction()/*: Pair<String, MutableList<Text.TextBlock>>*/ {
         var recognisedText = ""
         var recognisedTextList = mutableListOf<Text.TextBlock>()
         try {
@@ -148,6 +142,19 @@ class FragmentUploadPanCard : Fragment() {
                 .addOnSuccessListener {text ->
                     recognisedText = text.text
                     recognisedTextList  = text.textBlocks
+                    isPanCard =  detectPanCard(Pair(recognisedText,recognisedTextList))
+                    if(isPanCard) {
+                        Toast.makeText(requireContext(), "Pan Card Detected", Toast.LENGTH_SHORT).show()
+                        val bundle = bundleOf(
+                            IMAGE_URI to cameraImageUriFinal.toString()
+                        )
+                        findNavController().navigate(R.id.fragment_upload_pan_card_confirmation,bundle)
+                        clearUri()
+                    } else {
+                        Toast.makeText(requireContext(), "Please Enter Valid Document Only!", Toast.LENGTH_SHORT).show()
+                        resetImageViewtoDefault()
+                        clearUri()
+                    }
                     Log.d("TEST!", "proceedForExtraction: extractText is $recognisedText and list is $recognisedTextList")
                 }
                 .addOnFailureListener{
@@ -157,7 +164,6 @@ class FragmentUploadPanCard : Fragment() {
             e.printStackTrace()
             Toast.makeText(requireContext(), "Failed to Extract Data", Toast.LENGTH_SHORT).show()
         }
-        return Pair(recognisedText,recognisedTextList)
     }
 
     private fun invokeCamera() {
@@ -301,6 +307,7 @@ class FragmentUploadPanCard : Fragment() {
         private const val AUTHORITY_FILE_PROVIDER = "com.example.aadharpancardapp.fileProvider"
         private const val PAN = "permanent account number"
         private const val INCOME_TAX_DEPARTMENT = "income tax department"
+        const val IMAGE_URI = "imageUri"
     }
 
 

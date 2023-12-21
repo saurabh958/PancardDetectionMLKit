@@ -32,7 +32,12 @@
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="give_camera_permssn">Please give Camera Permission</string>
-
+    <string name="to_upload_a_different_pan_click_here">To upload a different PAN Click here</string>
+    <string name="pan">PAN</string>
+    <string name="enter_pan_number">Enter Pan Number</string>
+    <string name="how_can_we_address_you">How Can We Address You?</string>
+    <string name="aadhaar_card">Aadhaar Card</string>
+    <string name="verify_aadhaar">Verify Aadhaar</string>
 
 
 </resources>

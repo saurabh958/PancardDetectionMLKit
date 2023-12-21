@@ -15,4 +15,11 @@
         android:name="com.example.aadharpancardapp.fragment.FragmentUploadPanCard"
         android:label="fragment_upload_pan_card"
         tools:layout="@layout/fragment_upload_pan_card" />
+
+    <fragment
+        android:id="@+id/fragment_upload_pan_card_confirmation"
+        android:name="com.example.aadharpancardapp.fragment.FragmentUploadPanConfirmation"
+        android:label="fragment_upload_pan_confirm"
+        tools:layout="@layout/fragment_upload_pan_confirmation"/>
+
 </navigation>
