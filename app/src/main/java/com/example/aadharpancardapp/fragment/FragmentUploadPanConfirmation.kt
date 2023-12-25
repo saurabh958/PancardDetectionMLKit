@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.net.toUri
 import com.example.aadharpancardapp.R
 import com.example.aadharpancardapp.databinding.FragmentUploadPanConfirmationBinding
 import com.example.aadharpancardapp.fragment.FragmentUploadPanCard.Companion.IMAGE_URI
+import com.example.aadharpancardapp.utils.Utility
+import com.mukeshsolanki.OnOtpCompletionListener
+import com.mukeshsolanki.OtpView
 
 class FragmentUploadPanConfirmation : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
+
     private var cameraImageUriFinal: Uri? = null
     private lateinit var binding: FragmentUploadPanConfirmationBinding
 
@@ -21,7 +24,6 @@ class FragmentUploadPanConfirmation : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             cameraImageUriFinal = it.getString(IMAGE_URI)?.toUri()
-            //param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -41,24 +43,27 @@ class FragmentUploadPanConfirmation : Fragment() {
 
     private fun initView() {
         binding.imgSelected.setImageURI(cameraImageUriFinal)
+        binding.btnFinalSubmit.setOnClickListener {
+            Utility.showOtpBottomSheet(
+                requireContext(),
+                resources.getString(R.string.enter_otp_sent_to_your_aadhaar_linked_mobile_number),
+                ::otpSuccess,
+                ::handleResendOtp,
+                ::handleWrongAadhar
+            )
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentUploadPanConfirmation.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(cameraUri: String) =
-            FragmentUploadPanConfirmation().apply {
-                arguments = Bundle().apply {
-                    putString(IMAGE_URI, cameraUri)
-                }
-            }
+    private fun handleWrongAadhar() {
+
     }
+
+    private fun handleResendOtp() {
+
+    }
+
+    private fun otpSuccess(s: String) {
+        Toast.makeText(requireContext(),resources.getString(R.string.kyc_success), Toast.LENGTH_SHORT).show()
+    }
+
 }

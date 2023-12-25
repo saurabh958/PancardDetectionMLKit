@@ -38,6 +38,12 @@
     <string name="how_can_we_address_you">How Can We Address You?</string>
     <string name="aadhaar_card">Aadhaar Card</string>
     <string name="verify_aadhaar">Verify Aadhaar</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="enter_otp_sent_to_your_aadhaar_linked_mobile_number">Enter OTP Sent To Your Aadhaar Linked Mobile Number</string>
+    <string name="resend_otp">Resend OTP </string>
+    <string name="confirm_and_continue">Confirm and Continue</string>
+    <string name="kyc_success">Your KYC details are submitted successfully</string>
+    <string name="e_kyc">PanCard KYC</string>
 
 
 </resources>

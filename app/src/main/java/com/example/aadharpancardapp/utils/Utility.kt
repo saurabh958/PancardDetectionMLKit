@@ -1,16 +1,16 @@
 package com.example.aadharpancardapp.utils
 
 import android.content.Context
-import android.graphics.Color
-import android.os.Build
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import android.text.style.TypefaceSpan
-import androidx.annotation.RequiresApi
+import android.util.Log
+import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import com.example.aadharpancardapp.R
+import com.example.aadharpancardapp.databinding.OtpBottomsheetBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.mukeshsolanki.OnOtpCompletionListener
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -46,6 +46,45 @@ object Utility {
     fun regexMatcher(pattern: Pattern, string: String): Boolean {
         val m: Matcher = pattern.matcher(string)
         return m.find() && m.group(0) != null
+    }
+
+    fun showOtpBottomSheet(
+        context: Context,
+        message: String,
+        enteredOtp: (String) -> Unit,
+        resendOtp: () -> Unit,
+        wrongAadhar: () -> Unit
+    ): BottomSheetDialog {
+
+        val view = LayoutInflater.from(context).inflate(R.layout.otp_bottomsheet, null)
+        val dialog = BottomSheetDialog(context)
+        dialog.setContentView(view)
+        var otp = ""
+
+
+        val binding = OtpBottomsheetBinding.bind(view)
+
+        binding.tvResendOtp.setOnClickListener {
+            resendOtp()
+            dialog.dismiss()
+        }
+
+        binding.otpView.setOtpCompletionListener {
+            otp = it
+            Log.d("TEST!", "showOtpBottomSheet: $it")
+        }
+
+        binding.btnConfirm.setOnClickListener {
+            enteredOtp(otp)
+            dialog.dismiss()
+        }
+
+        if (dialog.isShowing) {
+            dialog.dismiss()
+        }
+        dialog.show()
+        return dialog
+
     }
 
 }

@@ -9,4 +9,5 @@
     <color name="card_light">#F8E9FA</color>
     <color name="screen_background">#FDF5FE</color>
     <color name="_272727">#272727</color>
+    <color name="otp_color">#FBEEFE</color>
 </resources>
