@@ -43,15 +43,37 @@ class FragmentUploadPanConfirmation : Fragment() {
 
     private fun initView() {
         binding.imgSelected.setImageURI(cameraImageUriFinal)
+
+        validateData()
         binding.btnFinalSubmit.setOnClickListener {
-            Utility.showOtpBottomSheet(
-                requireContext(),
-                resources.getString(R.string.enter_otp_sent_to_your_aadhaar_linked_mobile_number),
-                ::otpSuccess,
-                ::handleResendOtp,
-                ::handleWrongAadhar
-            )
+            if(validateData()) {
+                Utility.showOtpBottomSheet(
+                    requireContext(),
+                    resources.getString(R.string.enter_otp_sent_to_your_aadhaar_linked_mobile_number),
+                    ::otpSuccess,
+                    ::handleResendOtp,
+                    ::handleWrongAadhar
+                )
+            }
         }
+    }
+
+    private fun validateData() :Boolean {
+        if(binding.edtTextPan.text.isNullOrBlank()) {
+            Toast.makeText(context,"Please enter Pan Card Detail", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        if(binding.edtTextAddressYou.text.isNullOrBlank()) {
+            Toast.makeText(context, "Please enter Address", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        if(binding.edtTextAadharCard.text.isNullOrBlank()) {
+            Toast.makeText(context, "Please enter Aadhar card Number", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
 
     private fun handleWrongAadhar() {
